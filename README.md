@@ -4,7 +4,7 @@ A native Sega Dreamcast port of the 1998 N64 fighting game **ClayFighter: Sculpt
 Cut**, built on a decompilation of the N64 game.
 
 **No game data is included.** You need your own legally owned copy of ClayFighter: Sculptor's
-Cut for the Nintendo 64. The build reads the game's graphics, arenas, fighters, sound and music
+Cut for the N64. The build reads the game's graphics, arenas, fighters, sound and music
 from your ROM and puts them on the disc image that it makes. Please don't share any disc images
 that you might build.
 
