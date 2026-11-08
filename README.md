@@ -82,9 +82,9 @@ compiles the game and makes **`cfsc.cdi`**. Nothing is downloaded.
 | A | Wobbly Kick |
 | B (tap) | Fair Kick |
 | B (hold briefly) | Brutal Kick |
-| Left Trigger | Side-step one way |
-| Right Trigger | Side-step the other way |
-| D-Pad or Analogue Stick | Move, jump and crouch |
+| Left Trigger | Side-Step |
+| Right Trigger | Side-Step |
+| D-Pad or Analogue Stick | Move, Jump and Crouch |
 | Start | Pause |
 
 The attacks are fixed to this layout, so the game's own Button Config option is greyed out.
