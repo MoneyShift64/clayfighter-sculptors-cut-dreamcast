@@ -356,6 +356,14 @@ static void CodeStep2(u32 *seq, s32 *entered, s32 *pos, u32 pressed) {
 }
 
 extern u32 D_800AA134[], D_800AA174[];
+#ifdef TARGET_PORT
+/* (the port) the codes typed with quick presses only: Y stands for C-left and C-up, B for
+   C-down and C-right (the controllers' own presses are kept for the game) */
+extern u32 gPortCodePressed[2];
+#define CODE_PRESSED(p, pressed) gPortCodePressed[p]
+#else
+#define CODE_PRESSED(p, pressed) (pressed)
+#endif
 extern s32 D_800AA16C, D_800AA170, D_800AA1A8, D_800AA1AC;
 
 /* 0x80000F6C: the logic thread: every retrace, read the controllers, check the codes and run
@@ -378,26 +386,26 @@ void Game_Render(void *arg) {
         if (!(held & 0x2020)) {
             D_800AA0A4.pos[0] = 0;
         } else if (!(B_800F2D18 & 0x10)) {
-            if (B_800F4E54) {
-                CodeStep(&D_800AA0A4, 0, B_800F4E54);
-                CodeStep(&D_800AA0C8, 0, B_800F4E54);
-                CodeStep(&D_800AA0EC, 0, B_800F4E54);
-                CodeStep(&D_800AA110, 0, B_800F4E54);
-                CodeStep2(D_800AA134, &D_800AA164, &D_800AA16C, B_800F4E54);
-                CodeStep2(D_800AA174, &D_800AA1A4, &D_800AA1A8, B_800F4E54);
+            if (CODE_PRESSED(0, B_800F4E54)) {
+                CodeStep(&D_800AA0A4, 0, CODE_PRESSED(0, B_800F4E54));
+                CodeStep(&D_800AA0C8, 0, CODE_PRESSED(0, B_800F4E54));
+                CodeStep(&D_800AA0EC, 0, CODE_PRESSED(0, B_800F4E54));
+                CodeStep(&D_800AA110, 0, CODE_PRESSED(0, B_800F4E54));
+                CodeStep2(D_800AA134, &D_800AA164, &D_800AA16C, CODE_PRESSED(0, B_800F4E54));
+                CodeStep2(D_800AA174, &D_800AA1A4, &D_800AA1A8, CODE_PRESSED(0, B_800F4E54));
             }
             B_800F4E54 = 0;
         }
         if (!(B_800F8C84 & 0x2020)) {
             D_800AA0A4.pos[1] = 0;
         } else if (!(B_800F8C84 & 0x10)) {
-            if (B_800F4E6C) {
-                CodeStep(&D_800AA0A4, 1, B_800F4E6C);
-                CodeStep(&D_800AA0C8, 1, B_800F4E6C);
-                CodeStep(&D_800AA0EC, 1, B_800F4E6C);
-                CodeStep(&D_800AA110, 1, B_800F4E6C);
-                CodeStep2(D_800AA134, &D_800AA168, &D_800AA170, B_800F4E6C);
-                CodeStep2(D_800AA174, &D_800AA1A4, &D_800AA1AC, B_800F4E6C);
+            if (CODE_PRESSED(1, B_800F4E6C)) {
+                CodeStep(&D_800AA0A4, 1, CODE_PRESSED(1, B_800F4E6C));
+                CodeStep(&D_800AA0C8, 1, CODE_PRESSED(1, B_800F4E6C));
+                CodeStep(&D_800AA0EC, 1, CODE_PRESSED(1, B_800F4E6C));
+                CodeStep(&D_800AA110, 1, CODE_PRESSED(1, B_800F4E6C));
+                CodeStep2(D_800AA134, &D_800AA168, &D_800AA170, CODE_PRESSED(1, B_800F4E6C));
+                CodeStep2(D_800AA174, &D_800AA1A4, &D_800AA1AC, CODE_PRESSED(1, B_800F4E6C));
             }
             B_800F4E6C = 0;
         }

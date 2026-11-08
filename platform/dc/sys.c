@@ -88,6 +88,8 @@ void func_80076B90(void) {
     }
 }
 
+u32 gPortCodePressed[2];                /* (the port) players 1 and 2's presses for the secret codes */
+
 /* 0x80076DB8: read the controllers (the logic thread, once a tick) - as the original */
 void func_80076DB8(void) {
     s32 i, present = plat_read_pads(sPadButtons, sPadX, sPadY);
@@ -129,6 +131,14 @@ void func_80076DB8(void) {
     PLAYER(D_800B098C, B_800F7D4C, B_800F4E44, B_800F8828, B_800F5D10, B_800F2D44, B_800F4E94)
     PLAYER(D_800B0990, B_800F7A84, B_800F4E88, B_800F7E5C, B_800F2B60, B_800F4E58, B_800F7D50)
 #undef PLAYER
+    {   /* (the port) the secret codes' presses, players 1 and 2 */
+        static u16 last[4];
+        u16 now[4];
+        for (i = 0; i < 4; i++) now[i] = plat_code_buttons(i);
+        gPortCodePressed[0] = D_800B0984 != -1 ? (u32)(now[D_800B0984] & ~last[D_800B0984]) : 0;
+        gPortCodePressed[1] = D_800B0988 != -1 ? (u32)(now[D_800B0988] & ~last[D_800B0988]) : 0;
+        for (i = 0; i < 4; i++) last[i] = now[i];
+    }
 #define PORT(i, held, pressed, sx, sy, dir, dirPressed)                                        \
     held = B_800E13D8[i]; pressed = B_800E13E8[i]; sx = B_800E13F8[i];                          \
     sy = B_800E1408[i]; dir = B_800E1428[i]; dirPressed = B_800E1438[i];

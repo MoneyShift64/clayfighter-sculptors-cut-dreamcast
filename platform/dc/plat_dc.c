@@ -129,6 +129,10 @@ static u16 TapOrHold(TapHold *t, s32 pressed, u64 now, u16 tapBit, u16 holdBit) 
     return now < t->tapUntil ? tapBit : 0;
 }
 static TapHold sTapY[4], sTapB[4];
+/* the secret codes, typed with quick presses only (on the N64 four C buttons; here two buttons
+   with two each): X is B, A is A, Y is C-left and C-up, B is C-down and C-right */
+static u16 sCodeButtons[4];
+u16 plat_code_buttons(s32 port) { return (port >= 0 && port < 4) ? sCodeButtons[port] : 0; }
 
 s32 plat_read_pads(u16 buttons[4], s8 sx[4], s8 sy[4]) {
     s32 i, present = 0;
@@ -137,7 +141,7 @@ s32 plat_read_pads(u16 buttons[4], s8 sx[4], s8 sy[4]) {
         maple_device_t *dev = maple_enum_type(i, MAPLE_FUNC_CONTROLLER);
         cont_state_t *st;
         u16 b = 0;
-        buttons[i] = 0; sx[i] = 0; sy[i] = 0;
+        buttons[i] = 0; sx[i] = 0; sy[i] = 0; sCodeButtons[i] = 0;
         if (dev == NULL || (st = (cont_state_t *)maple_dev_status(dev)) == NULL) continue;
         present |= 1 << dev->port;
         if ((st->buttons & (CONT_A | CONT_B | CONT_X | CONT_Y | CONT_START)) ==
@@ -154,6 +158,8 @@ s32 plat_read_pads(u16 buttons[4], s8 sx[4], s8 sy[4]) {
         if (st->buttons & CONT_DPAD_LEFT) b |= 0x0200;
         if (st->buttons & CONT_DPAD_RIGHT) b |= 0x0100;
         buttons[dev->port] = b;
+        sCodeButtons[dev->port] = (u16)(((st->buttons & CONT_A) ? 0x8000 : 0) | ((st->buttons & CONT_X) ? 0x4000 : 0) |
+                                        ((st->buttons & CONT_Y) ? 0x000A : 0) | ((st->buttons & CONT_B) ? 0x0005 : 0));
         sx[dev->port] = (s8)(st->joyx * 80 / 128);
         sy[dev->port] = (s8)(-st->joyy * 80 / 128);
     }

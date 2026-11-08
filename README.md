@@ -93,20 +93,18 @@ In the menus, the D-Pad or Stick moves and A or Start selects. Hold
 
 ## Cheats
 
-The N64 game's own codes for its four secret fighters. Hold the **Left Trigger** (not the
-Right Trigger) and press the buttons in order; a sound plays when a code is entered. Then, on
-the character select screen, press the **Right Trigger** on a **?** slot to step through the
-fighters you have unlocked.
-
-"(Hold Briefly)" means holding the button down for a moment, as for the Brutal attacks; the
-others are quick presses.
+The N64 game's own codes for its four secret fighters, changed to suit the Dreamcast
+controller: quick presses only. Hold the **Left Trigger** (not the Right Trigger) and press
+the buttons in order; a sound plays when a code is entered. Then, on the character select
+screen, press the **Right Trigger** on a **?** slot to step through the fighters you have
+unlocked.
 
 | Fighter | Code |
 |---|---|
-| Earthworm Jim | X, Y, Y (Hold Briefly), B (Hold Briefly), B, Y (Hold Briefly) |
-| Boogerman | X, X, B (Hold Briefly), B (Hold Briefly), Y, B (Hold Briefly) |
-| Sumo Santa | A, B (Hold Briefly), A, B (Hold Briefly), B, Y (Hold Briefly) |
-| High Five | Y (Hold Briefly), B, Y, B (Hold Briefly), X, A |
+| Earthworm Jim | X, Y, Y, B, B, Y |
+| Boogerman | X, X, B, B, Y, B |
+| Sumo Santa | A, B, A, B, B, Y |
+| High Five | Y, B, Y, B, X, A |
 
 ## Layout
 

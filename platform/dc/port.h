@@ -20,6 +20,8 @@ void plat_init(void);
 u32  plat_vblank_count(void);               /* retraces since start-up (60 a second) */
 void plat_wait_vblank(u32 count);           /* wait until plat_vblank_count() > count */
 s32  plat_read_pads(u16 buttons[4], s8 sx[4], s8 sy[4]);   /* N64 button bits; returns the ports present */
+u16  plat_code_buttons(s32 port);   /* the buttons as the secret codes see them (N64 bits; a
+                                       button may stand for more than one), as last read */
 void plat_data_read(void *dst, u32 offset, u32 size);   /* from the converted data file (CFSC.DAT) */
 u32  plat_data_size(void);
 void plat_debug(const char *s);
