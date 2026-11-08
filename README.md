@@ -94,8 +94,8 @@ In the menus, the D-Pad or Stick moves and A or Start selects. Hold
 ## Cheats
 
 The N64 game's own codes for its four secret fighters, changed to suit the Dreamcast
-controller: quick presses only. Hold the **Left Trigger** (not the Right Trigger) and press
-the buttons in order; a sound plays when a code is entered. Then, on the character select
+controller: quick presses only. Hold the **Left Trigger** on any screen and press
+the buttons in order; a sound plays when a code is entered correctly. Then, on the character select
 screen, press the **Right Trigger** on a **?** slot to step through the fighters you have
 unlocked.
 
