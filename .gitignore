@@ -1,0 +1,4 @@
+baserom*.z64
+build/
+*.cdi
+__pycache__/
