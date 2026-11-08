@@ -1,6 +1,6 @@
 # ClayFighter: Sculptor's Cut for Sega Dreamcast
 
-A native Sega Dreamcast port of the 1998 Nintendo 64 fighting game **ClayFighter: Sculptor's
+A native Sega Dreamcast port of the 1998 N64 fighting game **ClayFighter: Sculptor's
 Cut**, built on a decompilation of the N64 game.
 
 **No game data is included.** You need your own legally owned copy of ClayFighter: Sculptor's
