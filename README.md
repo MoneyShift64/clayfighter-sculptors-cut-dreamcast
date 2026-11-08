@@ -77,11 +77,11 @@ compiles the game and makes **`cfsc.cdi`**. Nothing is downloaded.
 | Button | In a Fight |
 |---|---|
 | X | Wobbly Punch |
-| Y (tap) | Fair Punch |
-| Y (hold briefly) | Brutal Punch |
+| Y | Fair Punch |
+| Y (Hold Briefly) | Brutal Punch |
 | A | Wobbly Kick |
-| B (tap) | Fair Kick |
-| B (hold briefly) | Brutal Kick |
+| B | Fair Kick |
+| B (Hold Briefly) | Brutal Kick |
 | Left Trigger | Side-Step |
 | Right Trigger | Side-Step |
 | D-Pad or Analogue Stick | Move, Jump and Crouch |
