@@ -23,17 +23,15 @@ fighters, arenas, moves, combos, Claytalities, intro, menus and music, drawn by 
 Dreamcast's PowerVR graphics chip, with the game's sound played by the Dreamcast's own sound
 chip.
 
-Version 1.0 includes:
+Features:
 
-- The whole game: one player against the computer, two players against each other, every
-  fighter and every arena.
+- ClayFighter: Sculptor's Cut, running at 60fps, on the Sega Dreamcast.
+- The whole game; every fighter and every arena.
 - The N64's graphics turned into PowerVR polygons, with the matrix maths on the Dreamcast's
   SH-4 vector unit (SH4ZAM).
-- The game's own music (its MIDI sequences) and sound effects, from samples converted from
-  your ROM.
+- The game's own music (its MIDI sequences) and sound effects.
 - All six attacks on the Dreamcast controller (see Controls).
-- All of the game's data converted for the Dreamcast when you build: nothing is converted
-  while the game runs.
+- Cheat codes to unlock four secret fighters.
 
 Like the N64 original, the game saves nothing, so no VMU is needed.
 
