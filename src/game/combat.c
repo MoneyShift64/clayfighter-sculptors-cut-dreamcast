@@ -300,6 +300,15 @@ void Combat_UpdateBars(void) {
     if (gCombatFighter1->health == 170 && gCombatFighter1->v2C8 > 0) B_800E0CB0 = 1;
     B_800E0CAC = Approach10(B_800E0CAC, gCombatFighter2->health);
     if (gCombatFighter2->health == 170 && gCombatFighter2->v2C8 > 0) B_800E0CB4 = 1;
+#ifdef TARGET_PORT
+    {   /* (the port) each human player's health on their VMU, as the bar shows it */
+        extern s32 D_800B0984, D_800B0988;
+        extern void plat_vmu_fight(s32 port, s32 health, s32 timer);
+        s32 t = (0.0f <= gCombat->v34) ? (s32)gCombat->v34 : -1;
+        if (!gCombatFighter1->v260) plat_vmu_fight(D_800B0984, B_800E0CA8, t);
+        if (!gCombatFighter2->v260) plat_vmu_fight(D_800B0988, B_800E0CAC, t);
+    }
+#endif
 
     d1 = 200 - gCombatFighter1->v2BC;
     d2 = 200 - gCombatFighter2->v2BC;

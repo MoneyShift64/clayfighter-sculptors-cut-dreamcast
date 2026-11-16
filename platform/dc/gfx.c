@@ -17,6 +17,7 @@
  * which the platform draws as texture * vertex colour + offset colour.
  */
 #include <string.h>
+#include <stdint.h>
 #include <math.h>
 #include <stdio.h>
 #include "port.h"
@@ -386,9 +387,17 @@ static void CmdMoveWord(u32 w0, u32 w1) {
 
 /* (Fletcher-like: two sums, the second of the first, so the order counts; cheap on the SH-4,
    which has no fast multiply to spend on every word) */
+/* a 32-bit load from any address: the SH-4 faults on a misaligned word (emulators don't) */
+static u32 Ld32(const u8 *p) { u32 v; memcpy(&v, p, 4); return v; }
+
 static u32 Hash(const u8 *p, u32 n, u32 h) {
     const u32 *w = (const u32 *)p;
     u32 i, a = h, b = h ^ 0x9E3779B9u;
+    if (((uintptr_t)p & 3) != 0) {                      /* (a texture row on a 2-byte boundary) */
+        for (i = 0; i + 4 <= n; i += 4) { a += Ld32(p + i); b += a; }
+        for (; i < n; i++) { a += p[i]; b += a; }
+        return (a ^ (b << 7) ^ (b >> 25)) * 0x01000193u ^ b;
+    }
     for (i = 0; i + 8 <= n; i += 8, w += 2) { a += w[0]; b += a; a += w[1]; b += a; }
     if (i + 4 <= n) { a += w[0]; b += a; i += 4; }
     for (; i < n; i++) { a += p[i]; b += a; }
@@ -674,7 +683,7 @@ static u32 SourceHash(const u8 *src, u32 rows, u32 n, u32 stride) {
     } else {                                            /* (one long block: 64 words of it) */
         u32 k, step = (n / 64 + 3) & ~3u;
         for (r = 0; r < rows; r++)
-            for (k = 0; k + 4 <= n; k += step) h = (h ^ *(const u32 *)(src + r * stride + k)) * 0x01000193u;
+            for (k = 0; k + 4 <= n; k += step) h = (h ^ Ld32(src + r * stride + k)) * 0x01000193u;
     }
     m->src = src; m->rows = rows; m->n = n; m->stride = stride; m->frame = sFrameId; m->h = h; m->quick = quick;
     return h;

@@ -32,8 +32,10 @@ Features:
 - The game's own music (its MIDI sequences) and sound effects.
 - All six attacks on the Dreamcast controller (see Controls).
 - Cheat codes to unlock four secret fighters.
+- The VMU screen shows your health and the round's timer during a fight, and the
+  ClayFighter logo scrolling across it the rest of the time.
 
-Like the N64 original, the game saves nothing, so no VMU is needed.
+Like the N64 original, the game saves nothing, so no VMU is needed to play.
 
 ## Requirements
 
